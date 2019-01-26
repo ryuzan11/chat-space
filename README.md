@@ -28,7 +28,7 @@
 |------|----|-------|
 |name|string|null: false|
 |message_id|integer|foreign_key: true|
-|members_id|integer|null: false, foreign_key: true|
+|members_id|integer|null: false|
 
 ### Association
 - has_many :members
