@@ -13,7 +13,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false|
+|name|string|null: false|
 |password|string|null: false|
 |email|string|null: false|
 |members_id|integer|foreign_key: true|
