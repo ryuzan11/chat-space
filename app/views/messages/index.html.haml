@@ -1,0 +1,42 @@
+.wrapper
+  .side-bar
+    .header
+      %h3.header__name
+        user_name
+
+      %ul.header__lists
+        %li.list
+          %a(href="https://thawing-stream-63240.herokuapp.com/groups/30262/messages")
+            %i.fa.fa-pencil-square-o.icon
+        %li.list
+          %a(href="hhttps://thawing-stream-63240.herokuapp.com/users/12942/edit")
+            %i.fa.fa-cog.icon
+
+    .groups
+      = render "group"
+
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          グループ名
+        %ul.left-header__members
+          Member:
+          %li.member
+            メンバー名
+      .right-header
+        %a.right-header__botton(href="https://thawing-stream-63240.herokuapp.com/groups/30262/edit")
+          Edit
+    .messages.js-messages
+      = render "message"
+
+    .form
+      %form#new_message.js-form{"accept-charset" => "UTF-8", :action => "/groups/30262/messages", :enctype => "multipart/form-data", :method => "post"}
+        %input{:name => "utf8", :type => "hidden", :value => "✓"}
+        %input{:name => "authenticity_token", :type => "hidden", :value => "+3YMuwMCOzbb0wvS0Hvf5ybIwrlbU8LkbMlbYDSgfnfI82/MthW04d5s+YeViSyz0ieqwHy9C01JUH7JsQpA7w=="}
+        %input#message_content.form__message.js-content{:name => "message[content]", :placeholder => "type a message", :type => "text"}
+        .form__mask
+          %label.form__mask__image{:for => "message_image"}
+            %i.fa.fa-picture-o.icon
+            %input#message_image.hidden.js-file{:name => "message[image]", :type => "file"}
+        %input.form__submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}
