@@ -1,19 +1,6 @@
 .wrapper
-  .side-bar
-    .header
-      %h3.header__name
-        user_name
 
-      %ul.header__lists
-        %li.list
-          = link_to https:// do
-            %i.fa.fa-pencil-square-o.icon
-        %li.list
-          = link_to https:// do
-            %i.fa.fa-cog.icon
-
-    .groups
-      = render "group"
+  = render "devise/shared/side_bar"
 
   .chat
     .header
