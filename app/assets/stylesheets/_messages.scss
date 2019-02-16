@@ -142,12 +142,12 @@ body{
         }
       }
 
-      .form{
+      #form-content{
         background-color: #DDDDDD;
         box-sizing: border-box;
         height: 90px;
         padding: 20px 50px 20px 40px;
-        &__message.js-content{
+        .form__message{
           border: none;
           box-sizing: border-box;
           float: left;
@@ -155,7 +155,7 @@ body{
           padding: 0 10px;
           width: calc(100% - 150px);
         }
-        &__mask{
+        .form__mask{
           background-color: #fff;
           float: left;
           height: 50px;
@@ -163,7 +163,7 @@ body{
           &__image{
             font-size: 20px;
             line-height: 50px;
-            .fa.fa-picture-o.icon{
+            .icon{
               display: inline-block;
               font: normal normal normal 14px/1 FontAwesome;
               font-size: inherit;
@@ -171,12 +171,12 @@ body{
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
             }
-            .hidden.js-file{
+            .hidden{
               display: none;
             }
           }
         }
-        &__submit{
+        .form__submit{
             background-color: #38AEF0;
             border: none;
             color: #fff;
