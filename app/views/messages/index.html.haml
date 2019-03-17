@@ -15,7 +15,7 @@
       .right-header
         .right-header__button
         =link_to 'Edit', edit_group_path(@group)
-    .messages.js-messages
+    .messages__main
       / - @messages.each do |message| 配列オブジェクトを変数messageに代入する
       /   = render 'message', message: message
       / = render partial: 'message', collection: @messages
