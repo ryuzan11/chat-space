@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  function buildHTML(message){
+  function build_messageHTML(message){
     image = (message.image === null) ? "" :`<img src="${message.image}" class="lower-message__image">`
     var html = `<div class= "message" "data-message-id"=${message.id}>
                     <div class= upper-message>
@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
-  function scroll(){
+  function scrollbottom(){
     $('.messages__main').animate({scrollTop:$('.messages__main')[0].scrollHeight});
   }
 
@@ -35,12 +35,11 @@ $(document).on('turbolinks:load', function() {
       processData: false,
       contentType: false
     })
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(message){
+      var html = build_messageHTML(message);
       $('.messages__main').append(html).scrollHeight;
-      $('.form__massage').val('');
       $('#form-content')[0].reset()
-      scroll()
+      scrollbottom()
     })
     .fail(function(){
       alert('error');
