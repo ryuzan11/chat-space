@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   function build_messageHTML(message){
     image = (message.image === null) ? "" :`<img src="${message.image}" class="lower-message__image">`
-    var html = `<div class= "message" "data-message-id"=${message.id}>
+    var html = `<div class= "message" data-id=${message.id}>
                     <div class= upper-message>
                       <div class= upper-message__user-name>
                         ${message.name}
@@ -19,12 +19,28 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
+  function input_check() {
+    var check = true;
+    var form_text = $('.form__message').val();
+    var form_image = $('.hidden').val();
+
+    console.log(form_text);
+    console.log(form_image);
+
+    if(form_text == "" && form_image == ""){
+      window.alert('フォームに入力してください');
+      check = false;
+    }
+    return check;
+  }
+
   function scrollbottom(){
     $('.messages__main').animate({scrollTop:$('.messages__main')[0].scrollHeight});
   }
 
   $('#form-content').on('submit', function(e) {
     e.preventDefault();
+    if(!input_check() ){return false;}
     var formData = new FormData(this);
     var href = $(this).attr('action');
     $.ajax({
@@ -48,4 +64,34 @@ $(document).on('turbolinks:load', function() {
       $('.form__submit').prop('disabled',false);
     })
   })
+
+  $(function(){
+    setInterval(update, 5000);
+  });
+
+  function update(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    var message_id = $('.message:last').data('id');
+    var href = window.location.href;
+    console.log(message_id);
+    $.ajax({
+      url: href,
+      type: 'GET',
+      data: { id: message_id },
+      dataType: 'json'
+    })
+    .done(function(data){
+      var insertHtml = '';
+        data.forEach(function(message){
+        insertHtml = build_messageHTML(message);
+      });
+      $('.messages__main').append(insertHtml).animate({scrollTop:$('.messages__main')[0].scrollHeight});
+    })
+    .fail(function(){
+      alert('自動更新に失敗しました');
+    });
+    } else {
+      clearInterval(update);
+    }
+  };
 });
