@@ -24,9 +24,6 @@ $(document).on('turbolinks:load', function() {
     var form_text = $('.form__message').val();
     var form_image = $('.hidden').val();
 
-    console.log(form_text);
-    console.log(form_image);
-
     if(form_text == "" && form_image == ""){
       window.alert('フォームに入力してください');
       check = false;
