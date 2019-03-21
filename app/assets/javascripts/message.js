@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  function build_messageHTML(message){
+  function buildMessage(message){
     image = (message.image === null) ? "" :`<img src="${message.image}" class="lower-message__image">`
     var html = `<div class= "message" data-id=${message.id}>
                     <div class= upper-message>
@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
-  function input_check() {
+  function inputCheck() {
     var check = true;
     var form_text = $('.form__message').val();
     var form_image = $('.hidden').val();
@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function() {
 
   $('#form-content').on('submit', function(e) {
     e.preventDefault();
-    if(!input_check() ){return false;}
+    if(!inputCheck() ){return false;}
     var formData = new FormData(this);
     var href = $(this).attr('action');
     $.ajax({
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function() {
       contentType: false
     })
     .done(function(message){
-      var html = build_messageHTML(message);
+      var html = buildMessage(message);
       $('.messages__main').append(html).scrollHeight;
       $('#form-content')[0].reset()
       scrollbottom()
@@ -63,10 +63,10 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(function(){
-    setInterval(update, 5000);
+    setInterval(updateMessage, 5000);
   });
 
-  function update(){
+  function updateMessage(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     var message_id = $('.message:last').data('id');
     var href = window.location.href;
@@ -80,7 +80,7 @@ $(document).on('turbolinks:load', function() {
     .done(function(data){
       var insertHtml = '';
         data.forEach(function(message){
-        insertHtml = build_messageHTML(message);
+        insertHtml = buildMessage
       });
       $('.messages__main').append(insertHtml).animate({scrollTop:$('.messages__main')[0].scrollHeight});
     })
