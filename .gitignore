@@ -18,3 +18,5 @@
 
 # uploads image directory
 public/uploads/*
+
+public/*
