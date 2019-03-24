@@ -1,6 +1,6 @@
 json.id @message.id
 json.text @message.text
-json.image @message.image
+json.image @message.image.url
 json.user_id @message.user.id
 json.name @message.user.name
 json.group_id @message.group.id
