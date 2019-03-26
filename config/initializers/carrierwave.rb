@@ -12,6 +12,8 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
+  config.fog_directory  = 's3.ryuzan.public'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/s3.ryuzan.public'
 
-  config.fog_directory  = 's3-ryuzan'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/s3-ryuzan'
+end
+
