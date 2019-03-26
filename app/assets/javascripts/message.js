@@ -73,7 +73,6 @@ $(document).on('turbolinks:load', function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     var message_id = $('.message:last').data('id');
     var href = window.location.href;
-    console.log(message_id);
     $.ajax({
       url: href,
       type: 'GET',
@@ -83,7 +82,7 @@ $(document).on('turbolinks:load', function() {
     .done(function(message){
       var insertHtml = '';
         data.forEach(function(message){
-        insertHtml = buildMessage
+        insertHtml = buildMessage(message);
       });
       $('.messages__main').append(insertHtml).animate({scrollTop:$('.messages__main')[0].scrollHeight});
     })
