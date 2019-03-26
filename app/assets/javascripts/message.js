@@ -1,6 +1,9 @@
 $(document).on('turbolinks:load', function() {
   function buildMessage(message){
-    image = message.image ? message.image : ''
+    image = (message.image === null) ? "" :
+                  `<img src="${message.image}"
+                  class="lower-message__image">
+                  `
     var html = `<div class= "message" data-id=${message.id}>
                     <div class= upper-message>
                       <div class= upper-message__user-name>
@@ -10,23 +13,12 @@ $(document).on('turbolinks:load', function() {
                         ${message.created_at}
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <div class= lower-message>
-                      <p class="lower-message__content" >
-                        ${ message.text }
-                      </p>
-                      <img src=" ${ image }" , class="lower-message__image">
-                      </img>
-                    </div>
-                </div>`
-=======
                     <div class="lower-message__main">
                     <p class="lower-message__content">
                       ${message.text}
                     </p>
                   ${image}
                </div>`
->>>>>>> master
     return html;
   }
 
