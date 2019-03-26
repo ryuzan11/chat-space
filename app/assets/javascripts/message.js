@@ -13,15 +13,21 @@ $(document).on('turbolinks:load', function() {
                         ${message.created_at}
                       </div>
                     </div>
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> master
                     <div class="lower-message__main">
                     <p class="lower-message__content">
                       ${message.text}
                     </p>
                   ${image}
                </div>`
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
     return html;
   }
 

@@ -13,6 +13,11 @@ CarrierWave.configure do |config|
   }
 
 <<<<<<< HEAD
+
+  config.fog_directory  = 's3-ryuzan'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/s3-ryuzan'
+=======
+<<<<<<< HEAD
   config.fog_directory  = 's3.ryuzan.public'
 
   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/s3.ryuzan.public'
@@ -21,3 +26,4 @@ CarrierWave.configure do |config|
   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/s3-ryuzan'
 >>>>>>> master
 end
+>>>>>>> master
