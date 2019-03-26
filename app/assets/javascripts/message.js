@@ -79,7 +79,7 @@ $(document).on('turbolinks:load', function() {
       data: { id: message_id },
       dataType: 'json'
     })
-    .done(function(message){
+    .done(function(data){
       var insertHtml = '';
         data.forEach(function(message){
         insertHtml = buildMessage(message);
